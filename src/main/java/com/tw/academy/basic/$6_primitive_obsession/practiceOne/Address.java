@@ -15,4 +15,12 @@ public class Address {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public String getCity() {
+        return this.getAddress().substring(address.indexOf("省") + 1, address.indexOf("市"));
+    }
+
+    public String getProvince() {
+        return this.getAddress().substring(0, address.indexOf("省"));
+    }
 }
