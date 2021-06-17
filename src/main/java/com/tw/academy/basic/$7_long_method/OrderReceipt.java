@@ -11,6 +11,9 @@ import java.util.List;
  */
 public class OrderReceipt {
     public static final double SALES_TAX_RATE = .10;
+    public static final String PRINTING_RECEIPT_HEADER = "======Printing Orders======\n";
+    public static final String TOTAL_SALES_TAX_TITLE = "Sales Tax";
+    public static final String TOTAL_AMOUNT_TITLE = "Total Amount";
     private Order order;
 
     public OrderReceipt(Order order) {
@@ -18,7 +21,7 @@ public class OrderReceipt {
     }
 
     public String printReceipt() {
-        return "======Printing Orders======\n" +
+        return PRINTING_RECEIPT_HEADER +
                 order.getCustomerName() +
                 order.getCustomerAddress() +
                 generatePrintedItemInfo(order.getLineItems());
@@ -43,8 +46,8 @@ public class OrderReceipt {
 
             totalAmountWithSalesTax += lineItem.totalAmount() + salesTax;
         }
-        printedItemInfo.append("Sales Tax").append('\t').append(totalSalesTax);
-        printedItemInfo.append("Total Amount").append('\t').append(totalAmountWithSalesTax);
+        printedItemInfo.append(TOTAL_SALES_TAX_TITLE).append('\t').append(totalSalesTax);
+        printedItemInfo.append(TOTAL_AMOUNT_TITLE).append('\t').append(totalAmountWithSalesTax);
 
         return printedItemInfo;
     }
