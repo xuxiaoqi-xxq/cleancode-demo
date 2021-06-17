@@ -2,12 +2,12 @@ package com.tw.academy.basic.$5_data_clumps;
 
 public class Order {
 
-    private final User user;
     private int orderNumber;
+
+    private User user;
 
     public Order(int orderNumber, User user) {
         this.orderNumber = orderNumber;
-
         this.user = user;
     }
 
