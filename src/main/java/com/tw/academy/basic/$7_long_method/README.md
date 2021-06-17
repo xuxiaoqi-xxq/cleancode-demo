@@ -8,3 +8,6 @@
 
 #### LineItem
 1. 命名不表意：难以阅读
+
+#### Order
+1. 成员变量增加 private 修饰符：order内中的成员变量外部不应该能直接访问，要通过getter setter
