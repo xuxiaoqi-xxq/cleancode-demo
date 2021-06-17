@@ -16,34 +16,34 @@ public class OrderReceipt {
 
     //todo: rename -- Tom
     public String printReceipt() {
-        StringBuilder output = new StringBuilder();
+        StringBuilder printedReceipt = new StringBuilder();
 
-        output.append("======Printing Orders======\n");
+        printedReceipt.append("======Printing Orders======\n");
 
-        output.append(order.getCustomerName());
-        output.append(order.getCustomerAddress());
+        printedReceipt.append(order.getCustomerName());
+        printedReceipt.append(order.getCustomerAddress());
 
-        double totSalesTx = 0d;
-        double tot = 0d;
+        double totalSalesTax = 0d;
+        double totalAmountWithSalesTax = 0d;
         for (LineItem lineItem : order.getLineItems()) {
-            output.append(lineItem.getDescription());
-            output.append('\t');
-            output.append(lineItem.getPrice());
-            output.append('\t');
-            output.append(lineItem.getQuantity());
-            output.append('\t');
-            output.append(lineItem.totalAmount());
-            output.append('\n');
+            printedReceipt.append(lineItem.getDescription());
+            printedReceipt.append('\t');
+            printedReceipt.append(lineItem.getPrice());
+            printedReceipt.append('\t');
+            printedReceipt.append(lineItem.getQuantity());
+            printedReceipt.append('\t');
+            printedReceipt.append(lineItem.totalAmount());
+            printedReceipt.append('\n');
 
             double salesTax = lineItem.totalAmount() * .10;
-            totSalesTx += salesTax;
+            totalSalesTax += salesTax;
 
-            tot += lineItem.totalAmount() + salesTax;
+            totalAmountWithSalesTax += lineItem.totalAmount() + salesTax;
         }
 
-        output.append("Sales Tax").append('\t').append(totSalesTx);
+        printedReceipt.append("Sales Tax").append('\t').append(totalSalesTax);
 
-        output.append("Total Amount").append('\t').append(tot);
-        return output.toString();
+        printedReceipt.append("Total Amount").append('\t').append(totalAmountWithSalesTax);
+        return printedReceipt.toString();
     }
 }
