@@ -1,8 +1,8 @@
 package com.tw.academy.basic.$6_primitive_obsession.practiceOne;
 
 public class DeliveryManager {
-    Address to;
-    Address from;
+    private Address to;
+    private Address from;
 
     public DeliveryManager(Address from, Address to) {
         this.to = to;
