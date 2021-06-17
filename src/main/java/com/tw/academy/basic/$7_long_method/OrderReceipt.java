@@ -10,22 +10,18 @@ import java.util.List;
  * @since   2018-1-1
  */
 public class OrderReceipt {
+    public static final double SALES_TAX_RATE = .10;
     private Order order;
 
     public OrderReceipt(Order order) {
         this.order = order;
     }
 
-    //todo: rename -- Tom
     public String printReceipt() {
-        StringBuilder printedReceipt = new StringBuilder();
-
-        printedReceipt.append("======Printing Orders======\n");
-        printedReceipt.append(order.getCustomerName());
-        printedReceipt.append(order.getCustomerAddress());
-        printedReceipt.append(generatePrintedItemInfo(order.getLineItems()));
-
-        return printedReceipt.toString();
+        return "======Printing Orders======\n" +
+                order.getCustomerName() +
+                order.getCustomerAddress() +
+                generatePrintedItemInfo(order.getLineItems());
     }
 
     private StringBuilder generatePrintedItemInfo(List<LineItem> lineItems) {
@@ -42,7 +38,7 @@ public class OrderReceipt {
             printedItemInfo.append(lineItem.totalAmount());
             printedItemInfo.append('\n');
 
-            double salesTax = lineItem.totalAmount() * .10;
+            double salesTax = lineItem.totalAmount() * SALES_TAX_RATE;
             totalSalesTax += salesTax;
 
             totalAmountWithSalesTax += lineItem.totalAmount() + salesTax;
